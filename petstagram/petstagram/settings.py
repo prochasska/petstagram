@@ -25,7 +25,15 @@ SECRET_KEY = 'django-insecure-)i4y7fl$x)2@-!1ke4_^2z5v2-+804x!qnp439+3wvct&)ogc+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "localhost",
+    "gator-causal-monthly.ngrok-free.app",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:8000",
+    "https://gator-causal-monthly.ngrok-free.app"
+]
 
 
 # Application definition
@@ -81,9 +89,13 @@ WSGI_APPLICATION = 'petstagram.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "petstagram_second",
+        "USER": "postgres",
+        "PASSWORD": "admin",
+        "HOST": "127.0.0.1",
+        "PORT": "5432",
     }
 }
 
@@ -130,7 +142,8 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = 'staticfiles'
 
-
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # Default primary key field type
