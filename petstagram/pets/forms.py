@@ -15,9 +15,9 @@ class PetBaseForm(forms.ModelForm):
                     'placeholder': 'Pet Name',
                 },
             ),
-            "date_of_birth": forms.DateInput(
+            "date_of_birth": forms.DateInput( # forms.DateInput е вид на HTML полето във формата
                 attrs={
-                    'type': 'date',
+                    'type': 'date', # излиза като календар във формата
                 }
             ),
             "personal_photo": forms.TextInput(

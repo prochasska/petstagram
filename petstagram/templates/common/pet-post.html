@@ -58,7 +58,7 @@
             <div class="left">
                     <span class="heart">
                         <a href="{% url 'like' photo_id=photo.pk %}">
-                            {% if photo.like_set.all %}
+                            {% if photo.like_set.all %}  <!-- ако снимката има лайкове, свързваме снимката с лайкове -->
                                 <i class="fa-solid fa-heart" style="color: #ed4040;"></i>
                             {% else %}
                                 <i class="fa-regular fa-heart"></i>
@@ -74,6 +74,13 @@
 
         <a href="#">
             <p class="likes">{{ photo.like_set.count }} likes</p>
+            <!-- брой харесвания; идва от вю-то
+            context = {
+    "photo": photo,
+}
+like_set е обратна релация от модела Like към Photo.
+Създава се автоматично от Django, когато имаш ForeignKey към Photo в модела Like
+            -->
         </a>
 
         <!-- tagged pets -->

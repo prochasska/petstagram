@@ -29,16 +29,18 @@ def home_page_view(request: HttpRequest) -> HttpResponse:
 
 def like(request: HttpRequest, photo_id: int) -> HttpResponse:
     like_object = Like.objects.filter(to_photo_id=photo_id).first()
+    # търсим по ид дали има харесана снимка
 
     if like_object:
-        like_object.delete()
+        like_object.delete() # отхаресай снимката
     else:
         Like.objects.create(
             to_photo_id=photo_id
         )
 
     return redirect(request.META.get('HTTP_REFERER') + f"#{photo_id}")
-
+    # Пренасочва потребителя обратно към страницата, от която е дошъл
+    # и го "скролва" директно до конкретната снимка чрез т.нар. HTML "котва" (#photo_id).
 
 def share(request: HttpRequest, photo_id: int) -> HttpResponse:
     # pip install pyperclip
